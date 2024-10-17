@@ -1,29 +1,27 @@
 #!/usr/bin/python3
-"""
-Module that contains the minOperations function.
+""" Script that computes a minimum operations
+    needed in a CopyAll - Paste task
 """
 
 
 def minOperations(n):
     """
-    Calculates the fewest number of operations needed to result in exactly n H characters.
+    Method for compute the minimum number
+    of operations for task Copy All and Paste
 
     Args:
-        n (int): The desired number of H characters.
-
-    Returns:
-        int: The minimum number of operations. Returns 0 if n is impossible to achieve.
+        n: input value
+        factor_list: List to save the operations
+    Return: the sum of the operations
     """
-    if n <= 1:
+    if n < 2:
         return 0
-
-    operations = 0
-    divisor = 2
-
-    while n > 1:
-        while n % divisor == 0:
-            operations += divisor
-            n //= divisor
-        divisor += 1
-
-    return operations
+    factor_list = []
+    i = 1
+    while n != 1:
+        i += 1
+        if n % i == 0:
+            while n % i == 0:
+                n /= i
+                factor_list.append(i)
+    return sum(factor_list)
